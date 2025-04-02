@@ -1,5 +1,3 @@
-#
-
 ## Overview
 
 The Unraid XML Template is used by Unraid to install both Docker Containers and Plugins. In both cases, it describes the program and points Unraid to the correct installation repository.
