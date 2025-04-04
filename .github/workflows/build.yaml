@@ -1,0 +1,21 @@
+name: Build wiki
+on:
+  push:
+    branches:
+      master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Push to wiki
+      env:
+        TOKEN: ${{ secrets.SSH_PRIVATE_KEY }}
+      if: env.TOKEN != ''
+      run: |
+        git remote add upstream git@github.com:Teknicallity/unraid-hello-world-plugin.wiki.git
+        git fetch upstream
+        git push --force upstream master
